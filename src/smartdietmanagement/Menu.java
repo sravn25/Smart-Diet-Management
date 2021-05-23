@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
 
+import java.util.Scanner;
+
 public class Menu {
 
     public static LocalDateTime date = LocalDateTime.now();
@@ -19,6 +21,10 @@ public class Menu {
     public static String time;
 
     public static String mainOpt[] = { "Profile Data", "Fitness", "Diet", "Food Intake", "Exit" };
+
+    public static void print(String text) {
+        System.out.print(text);
+    }
 
     public static void cls() {
         try {
@@ -63,6 +69,37 @@ public class Menu {
             System.out.print("#");
         }
         System.out.println("\n");
+    }
+
+    public static void loginMenu() {
+        System.out.printf("%-25s%-35s%n%n", "[1]", "Login");
+        System.out.printf("%-25s%-35s%n%n", "[2]", "Register");
+    }
+
+    public static int loginSelection(String selection) {
+        if (selection.compareTo("1") == 0) {
+            return 1;
+        } else if (selection.compareTo("2") == 0) {
+            return 2;
+        }
+        return 0;
+    }
+
+    public static int logginIn() {
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("What is your username?");
+        String username = input.nextLine();
+        System.out.println("What is your password?");
+        String password = input.nextLine();
+        Account account = new Account(username, password);
+        int id = account.validation();
+        if (id != -1) {
+            input.close();
+            return id;
+        }
+        input.close();
+        return -1;
     }
 
     public static void mainMenu() {
