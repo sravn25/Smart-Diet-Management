@@ -15,7 +15,12 @@ public class Main {
 
 		Menu.menu("Login Menu");
 		Menu.mainMenu();
-		Menu.footer();
+		Menu.footer("What would you like to do?");
+
+		boolean inMenu = true;
+		while (inMenu) {
+
+		}
 
 		input.close();
 	}
