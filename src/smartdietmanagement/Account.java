@@ -6,7 +6,7 @@ package smartdietmanagement;
  */
 
 public class Account {
-    private static String users[][] = { { "Victor", "1234" }, { "Java", "1990" }, { "Placeholder", "root" } };
+    private static String users[][] = { { "Victor", "1234" }, { "Java", "1995" }, { "Placeholder", "root" } };
     private String username;
     private String password;
 
