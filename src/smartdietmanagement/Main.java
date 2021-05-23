@@ -13,13 +13,11 @@ public class Main {
 
 		Scanner input = new Scanner(System.in);
 
-		Menu.menu("Login Menu");
-		Menu.mainMenu();
-		Menu.footer("What would you like to do?");
-
 		boolean inMenu = true;
 		while (inMenu) {
-
+			Menu.menu("Login Menu");
+			Menu.mainMenu();
+			Menu.footer("What would you like to do?");
 		}
 
 		input.close();
