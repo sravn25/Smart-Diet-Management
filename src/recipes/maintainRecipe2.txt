@@ -1,0 +1,12 @@
+Weight Maintain Recipe 2
+Breakfast
+Bagel Boats
+Url: https://tasty.co/recipe/bagel-boats
+
+Lunch
+Honey Soy Glazed Salmon
+Url: https://tasty.co/recipe/honey-soy-glazed-salmon
+
+Dinner
+Chicken & Veggie Stir-Fry
+Url: https://tasty.co/recipe/chicken-veggie-stir-fry
