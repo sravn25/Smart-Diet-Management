@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
 public class Menu {
 
@@ -74,6 +74,7 @@ public class Menu {
     public static void loginMenu() {
         System.out.printf("%-25s%-35s%n%n", "[1]", "Login");
         System.out.printf("%-25s%-35s%n%n", "[2]", "Register");
+        System.out.printf("%-25s%-35s%n%n", "[3]", "Guest");
     }
 
     public static int loginSelection(String selection) {
@@ -85,6 +86,7 @@ public class Menu {
         return 0;
     }
 
+    /*
     public static int logginIn() {
 
         Scanner input = new Scanner(System.in);
@@ -101,6 +103,7 @@ public class Menu {
         input.close();
         return -1;
     }
+    */
 
     public static void mainMenu() {
         String no;
