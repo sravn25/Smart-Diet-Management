@@ -74,16 +74,16 @@ public class Menu {
     public static void loginMenu() {
         System.out.printf("%-25s%-35s%n%n", "[1]", "Login");
         System.out.printf("%-25s%-35s%n%n", "[2]", "Register");
-        System.out.printf("%-25s%-35s%n%n", "[3]", "Guest");
+        System.out.printf("%-25s%-35s%n%n", "[3]", "Login as Guest");
     }
 
-    public static int loginSelection(String selection) {
-        if (selection.compareTo("1") == 0) {
-            return 1;
-        } else if (selection.compareTo("2") == 0) {
-            return 2;
-        }
-        return 0;
+    public static int parseSelection(String selection) {
+        try {
+            int number =  Integer.parseInt(selection);
+            return number;
+        } catch (Exception e) {
+            return -1;
+        } 
     }
 
     /*

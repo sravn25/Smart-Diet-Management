@@ -29,7 +29,7 @@ public class Main {
 				Menu.footer("What would you like to do?");
 
 				String selection = input.nextLine();
-				int loginProceed = Menu.loginSelection(selection);
+				int loginProceed = Menu.parseSelection(selection);
 
 				// Login option
 				if (loginProceed == 1) {
@@ -73,7 +73,7 @@ public class Main {
 						Menu.menu("Register an account");
 						System.out.println("Enter your Username (At least 4 characters): ");
 						username = input.nextLine();
-						validUsername =  Account.validity(username, "username");
+						validUsername = Account.validity(username, "username");
 						if (validUsername) {
 							while (!validPassword) {
 								System.out.println("Enter your Password (At least 6 characters): ");
@@ -103,7 +103,8 @@ public class Main {
 				} else if (loginProceed == 3) {
 					Menu.cls();
 					Menu.menu("Login Menu");
-					Menu.footer("Logged in with Guest account!");
+					Menu.print("\nLogged in with Guest account!");
+					Menu.footer("");
 					Menu.print("\n\nPress ENTER to continue");
 					input.nextLine();
 					Menu.cls();
@@ -117,8 +118,39 @@ public class Main {
 
 			}
 
-			Menu.menu("ID: " + id);
-			input.nextLine();
+			Menu.menu("Main Menu");
+			Menu.mainMenu();
+			Menu.footer("What would you like to do?");
+
+			String selection = input.nextLine();
+			int menuProceed = Menu.parseSelection(selection);
+
+			switch (menuProceed) {
+				case 1:
+					// Profile Data
+					break;
+				case 2:
+					// Fitness
+					break;
+				case 3:
+					// Diet
+					break;
+				case 4:
+					// Food Intake
+					break;
+				case 5:
+					// Exit
+					input.close();
+					Menu.cls();
+					Menu.print("\t\t\n\nGoodbye!");
+					Menu.wait(2000);
+					System.exit(0);
+					break;
+				default:
+					System.out.println("Invalid Selection!\nPress ENTER to continue");
+					input.nextLine();
+					Menu.cls();
+			}
 
 			input.close();
 		}
