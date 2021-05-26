@@ -33,8 +33,12 @@ public class ProfileData {
     }
 
     // calculate bmi
-    public double BMICalc(double weight, double height) {
-        return (weight / (height * height));
+    public double BMICalc() {
+        return (this.weight / Math.pow(this.height, this.height));
+    }
+
+    public double BMICalculator(double height, double weight) {
+        return (weight / Math.pow(height, height));
     }
 
     public String BMIScale(double bmi) {
@@ -75,9 +79,15 @@ public class ProfileData {
 
             if (data[i] == null)
                 System.out.printf("%-20s%-20s%-20s%n%n", number, type, "data unavailable");
+            else if (i == 0 || i == 1)
+                System.out.printf("%-20s%-20s%-20.2f%n%n", number, type, i == 0 ? this.height : this.weight);
             else
                 System.out.printf("%-20s%-20s%-20s%n%n", number, type, data[i]);
         }
+        if (this.weight == 0.0 && this.height == 0.0)
+            System.out.printf("%-20s%-20s%-20s%n%n", "[5]", "BMI", "insufficient data");
+        else
+            System.out.printf("%-20s%-20s%-20.2f%n%n", "[5]", "BMI", this.BMICalc());
 
     }
 

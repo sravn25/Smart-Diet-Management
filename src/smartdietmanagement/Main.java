@@ -14,6 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		ProfileData profile1 = new ProfileData(0.0, 0.0, 0, "");
 
 		boolean inMenu = true;
 		int id = -1;
@@ -129,7 +130,6 @@ public class Main {
 			switch (menuProceed) {
 				case 1:
 					// Profile Data
-					ProfileData profile1 = new ProfileData(0.0, 0.0, 0, "");
 					boolean inProfile = true;
 					while (inProfile) {
 						Menu.cls();
@@ -139,6 +139,7 @@ public class Main {
 						selection = input.nextLine();
 						int profileProceed = Menu.parseSelection(selection);
 
+						// display user data
 						if (profileProceed == 1) {
 							Menu.cls();
 							Menu.menu("Display User Data");
@@ -146,6 +147,7 @@ public class Main {
 							Menu.footer("Press ENTER to continue");
 							input.nextLine();
 
+							// update user data
 						} else if (profileProceed == 2) {
 							boolean updatingData = true;
 							boolean updated = false;
@@ -153,7 +155,7 @@ public class Main {
 								Menu.cls();
 								Menu.menu("Update User Data");
 								profile1.displayData();
-								Menu.footer("Which one would you like to update?\nEnter \"X\" to return");
+								Menu.footer("Select one to update, (x) to return");
 								selection = input.nextLine();
 								if (selection.equalsIgnoreCase("x")) {
 									updatingData = false;
@@ -170,14 +172,52 @@ public class Main {
 									System.out.println(updated ? "Data Updated\nPress ENTER to continue"
 											: "Data Not Updated\nPress ENTER to continue");
 									input.nextLine();
-
+								} else if (type == 5) {
+									Menu.print("BMI is updated automatically!\nPress ENTER to continue");
+									input.nextLine();
 								} else {
 									Menu.print("Invalid selection!\nPress ENTER to continue");
 									input.nextLine();
 								}
 							}
 
+							// bmi calculator
 						} else if (profileProceed == 3) {
+
+							boolean calculateBmi = true;
+							while (calculateBmi) {
+								Menu.cls();
+								Menu.menu("BMI Calculator");
+								double bmi = profile1.BMICalc();
+								System.out.printf("%-20s%-20s%-20f%n%n", "[1]", "My BMI", bmi);
+								System.out.printf("%-20s%-20s%-20s%n%n", "[2]", "BMI Status", profile1.BMIScale(bmi));
+								Menu.footer("[1] to calculate BMI, [2] to Return");
+								selection = input.nextLine();
+								int bmiProceed = Menu.parseSelection(selection);
+								if (bmiProceed == 1) {
+
+									Menu.cls();
+									Menu.menu("BMI Calculator");
+									double newHeight, newWeight;
+									System.out.print("Enter height (in  m) to be calculated: ");
+									newHeight = Double.parseDouble(input.nextLine());
+									System.out.print("Enter weight (in kg) to be calculated: ");
+									newWeight = Double.parseDouble(input.nextLine());
+									Menu.print("\n");
+
+									Menu.footer("BMI: " + profile1.BMICalculator(newHeight, newWeight));
+
+									System.out.println("Press ENTER to continue");
+									input.nextLine();
+
+								} else if (bmiProceed == 2) {
+									calculateBmi = false;
+									break;
+								} else {
+									System.out.println("Invalid Selection\nPress ENTER to continue");
+									input.nextLine();
+								}
+							}
 
 						} else if (profileProceed == 4) {
 
