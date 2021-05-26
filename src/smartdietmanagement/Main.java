@@ -25,7 +25,7 @@ public class Main {
 			while (id == -1) {
 				// Login Menu interface
 				Menu.menu("Login Menu");
-				Menu.loginMenu();
+				Menu.mainMenu("login");
 				Menu.footer("What would you like to do?");
 
 				String selection = input.nextLine();
@@ -103,7 +103,7 @@ public class Main {
 				} else if (loginProceed == 3) {
 					Menu.cls();
 					Menu.menu("Login Menu");
-					Menu.print("\nLogged in with Guest account!");
+					Menu.print("\nLogged in with Guest account!\n\n\n");
 					Menu.footer("");
 					Menu.print("\n\nPress ENTER to continue");
 					input.nextLine();
@@ -118,8 +118,9 @@ public class Main {
 
 			}
 
+			Menu.cls();
 			Menu.menu("Main Menu");
-			Menu.mainMenu();
+			Menu.mainMenu("main");
 			Menu.footer("What would you like to do?");
 
 			String selection = input.nextLine();
@@ -128,6 +129,67 @@ public class Main {
 			switch (menuProceed) {
 				case 1:
 					// Profile Data
+					ProfileData profile1 = new ProfileData(0.0, 0.0, 0, "");
+					boolean inProfile = true;
+					while (inProfile) {
+						Menu.cls();
+						Menu.menu("Profile Data");
+						Menu.mainMenu("profile");
+						Menu.footer("What would you like to do?");
+						selection = input.nextLine();
+						int profileProceed = Menu.parseSelection(selection);
+
+						if (profileProceed == 1) {
+							Menu.cls();
+							Menu.menu("Display User Data");
+							profile1.displayData();
+							Menu.footer("Press ENTER to continue");
+							input.nextLine();
+
+						} else if (profileProceed == 2) {
+							boolean updatingData = true;
+							boolean updated = false;
+							while (updatingData) {
+								Menu.cls();
+								Menu.menu("Update User Data");
+								profile1.displayData();
+								Menu.footer("Which one would you like to update?\nEnter \"X\" to return");
+								selection = input.nextLine();
+								if (selection.equalsIgnoreCase("x")) {
+									updatingData = false;
+									break;
+								}
+								int type = Menu.parseSelection(selection);
+								if (type > 0 && type < 5) {
+									Menu.print(type == 4 ? "Enter your goal (gain / lose / maintain): "
+											: type == 3 ? "Enter your age: "
+													: type == 2 ? "Enter your weight (in kg) : "
+															: "Enter your height (in m): ");
+									String updateValue = input.nextLine();
+									updated = profile1.update(type, updateValue);
+									System.out.println(updated ? "Data Updated\nPress ENTER to continue"
+											: "Data Not Updated\nPress ENTER to continue");
+									input.nextLine();
+
+								} else {
+									Menu.print("Invalid selection!\nPress ENTER to continue");
+									input.nextLine();
+								}
+							}
+
+						} else if (profileProceed == 3) {
+
+						} else if (profileProceed == 4) {
+
+						} else if (profileProceed == 5) {
+							inProfile = false;
+							break;
+						} else {
+
+						}
+
+					}
+
 					break;
 				case 2:
 					// Fitness
@@ -141,10 +203,7 @@ public class Main {
 				case 5:
 					// Exit
 					input.close();
-					Menu.cls();
-					Menu.print("\t\t\n\nGoodbye!");
-					Menu.wait(2000);
-					System.exit(0);
+					Menu.exit();
 					break;
 				default:
 					System.out.println("Invalid Selection!\nPress ENTER to continue");
@@ -152,7 +211,7 @@ public class Main {
 					Menu.cls();
 			}
 
-			input.close();
 		}
+		input.close();
 	}
 }
