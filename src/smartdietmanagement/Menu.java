@@ -20,7 +20,9 @@ public class Menu {
 
     public static String time;
 
+    public static String loginOpt[] = { "Login", "Register", "Login as Guest" };
     public static String mainOpt[] = { "Profile Data", "Fitness", "Diet", "Food Intake", "Exit" };
+    public static String profileOpt[] = { "Display User Data", "Update User Data", "BMI Calculator", "Log out", "Return" };
 
     public static void print(String text) {
         System.out.print(text);
@@ -71,46 +73,40 @@ public class Menu {
         System.out.println("\n");
     }
 
-    public static void loginMenu() {
-        System.out.printf("%-25s%-35s%n%n", "[1]", "Login");
-        System.out.printf("%-25s%-35s%n%n", "[2]", "Register");
-        System.out.printf("%-25s%-35s%n%n", "[3]", "Login as Guest");
+    public static void mainMenu(String type) {
+        String no;
+        if (type.equals("login")) {
+            for (int j = 1; j <= loginOpt.length; ++j) {
+                no = "[" + j + "]";
+                System.out.printf("%-25s%-35s%n%n", no, loginOpt[j - 1]);
+            }
+        } else if (type.equals("main")) {
+            for (int j = 1; j <= mainOpt.length; ++j) {
+                no = "[" + j + "]";
+                System.out.printf("%-25s%-35s%n%n", no, mainOpt[j - 1]);
+            }
+        } else if (type.equals("profile")) {
+            for (int j = 1; j <= profileOpt.length; ++j) {
+                no = "[" + j + "]";
+                System.out.printf("%-25s%-35s%n%n", no, profileOpt[j - 1]);
+            }
+        }
     }
 
     public static int parseSelection(String selection) {
         try {
-            int number =  Integer.parseInt(selection);
+            int number = Integer.parseInt(selection);
             return number;
         } catch (Exception e) {
             return -1;
-        } 
+        }
     }
 
-    /*
-    public static int logginIn() {
-
-        Scanner input = new Scanner(System.in);
-        System.out.println("What is your username?");
-        String username = input.nextLine();
-        System.out.println("What is your password?");
-        String password = input.nextLine();
-        Account account = new Account(username, password);
-        int id = account.validation();
-        if (id != -1) {
-            input.close();
-            return id;
-        }
-        input.close();
-        return -1;
-    }
-    */
-
-    public static void mainMenu() {
-        String no;
-        for (int j = 1; j <= mainOpt.length; ++j) {
-            no = "[" + j + "]";
-            System.out.printf("%-25s%-35s%n%n", no, mainOpt[j - 1]);
-        }
+    public static void exit() {
+        cls();
+        print("\t\t\n\nGoodbye!");
+        wait(2000);
+        System.exit(0);
     }
 
 }
