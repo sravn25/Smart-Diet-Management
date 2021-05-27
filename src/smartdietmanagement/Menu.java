@@ -22,7 +22,9 @@ public class Menu {
 
     public static String loginOpt[] = { "Login", "Register", "Login as Guest" };
     public static String mainOpt[] = { "Profile Data", "Fitness", "Diet", "Food Intake", "Exit" };
-    public static String profileOpt[] = { "Display User Data", "Update User Data", "BMI Calculator", "Log out", "Return" };
+    public static String profileOpt[] = { "Display User Data", "Update User Data", "BMI Calculator", "Log out",
+            "Return" };
+    public static String fitnessOpt[] = { "Calories Data", "Exercise", "Return" };
 
     public static void print(String text) {
         System.out.print(text);
@@ -89,6 +91,11 @@ public class Menu {
             for (int j = 1; j <= profileOpt.length; ++j) {
                 no = "[" + j + "]";
                 System.out.printf("%-25s%-35s%n%n", no, profileOpt[j - 1]);
+            }
+        } else if (type.equals("fitness")) {
+            for (int j = 1; j <= fitnessOpt.length; ++j) {
+                no = "[" + j + "]";
+                System.out.printf("%-25s%-35s%n%n", no, fitnessOpt[j - 1]);
             }
         }
     }
