@@ -14,14 +14,26 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		ProfileData profile1 = new ProfileData(0.0, 0.0, 0, "");
 
 		boolean inMenu = true;
 		int id = -1;
 		String username = "", password = "";
+		ProfileData profile1 = new ProfileData();
+		int calories;
 
 		// Stays inside menu until QUIT command is executed
 		while (inMenu) {
+
+			Calories caloriesConst = new Calories(profile1.weight, profile1.height, profile1.age);
+
+			if (id == -1) {
+				profile1.setHeight(0.0);
+				profile1.setWeight(0.0);
+				profile1.setAge(0);
+				profile1.setGoal("");
+				calories = 0;
+				caloriesConst.sex = 'x';
+			}
 
 			while (id == -1) {
 				// Login Menu interface
@@ -219,13 +231,17 @@ public class Main {
 								}
 							}
 
+							// logout
 						} else if (profileProceed == 4) {
+							id = -1;
+							break;
 
 						} else if (profileProceed == 5) {
 							inProfile = false;
 							break;
 						} else {
-
+							System.out.println("Invalid Selection\nPress ENTER to continue");
+							input.nextLine();
 						}
 
 					}
@@ -233,7 +249,55 @@ public class Main {
 					break;
 				case 2:
 					// Fitness
-					break;
+
+					if (profile1.weight != 0.0 && profile1.height != 0.0 && profile1.age != 0) {
+						caloriesConst.updateCalories(profile1.weight, profile1.height, profile1.age);
+					}
+
+					boolean inFitness = true;
+					while (inFitness) {
+						Menu.cls();
+						Menu.menu("Fitness");
+						Menu.mainMenu("fitness");
+						Menu.footer("What would you like to do?");
+
+						selection = input.nextLine();
+						int fitnessProceed = Menu.parseSelection(selection);
+						switch (fitnessProceed) {
+							case 1: // Calories data
+
+								while (caloriesConst.sex == 'x') {
+									Menu.cls();
+									Menu.mainMenu("Survey");
+									Menu.print("\nEnter [M] for Male\nEnter[F] for Female\n\n");
+									Menu.footer("Are you Male or Female?");
+									String sex = input.nextLine();
+									boolean correctInput = caloriesConst.updateSex(sex);
+									if (!correctInput) {
+										System.out.println("Invalid option!\nPress ENTER to continue");
+										input.nextLine();
+									}
+								}
+
+								Menu.menu("Calories Data");
+
+								break;
+
+							case 2: // Exercise Menu
+
+								break;
+
+							case 3: // return
+								inFitness = false;
+								break;
+
+							default:
+								System.out.println("Invalid Selection\nPress ENTER to continue");
+								input.nextLine();
+						}
+
+						break;
+					}
 				case 3:
 					// Diet
 					break;
