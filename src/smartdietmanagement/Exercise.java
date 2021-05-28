@@ -35,7 +35,7 @@ public class Exercise {
     class ExerciseReminder extends TimerTask {
 
         public void run() {
-            System.out.format("Time to exercise!%n");
+            System.out.format("Exercise Completed!%n");
             timer.cancel();
         }
     }
@@ -50,7 +50,8 @@ public class Exercise {
                 : today.equals("Tue") ? "Tuesday"
                         : today.equals("Wed") ? "Wednesday"
                                 : today.equals("Thu") ? "Thursday"
-                                        : today.equals("Fri") ? "Friday" : today.equals("Sat") ? "Saturday" : "Sunday",
+                                        : today.equals("Fri") ? "Friday" : today.equals("Sat") ? "Saturday" : "Sunday");
+        System.out.printf("%-30s%-30s%n", "Activity: ",
                 today.equals("Mon") ? activities[0][1]
                         : today.equals("Tue") ? activities[1][1]
                                 : today.equals("Wed") ? activities[2][1]
@@ -104,24 +105,25 @@ public class Exercise {
         for (int i = 0; i < 60; ++i) {
             System.out.print("=");
         }
-        System.out.printf("%n%-30s%-30s%n", "Today :", days[index]);
+        System.out.printf("%n%n%-30s%-30s%n", "Today :", days[index]);
         System.out.printf("%-30s%-30s%n%n", "Today's Activity :", activities[index][0]);
         for (int i = 0; i < 60; ++i) {
             System.out.print("=");
         }
 
-        System.out.printf("%n%-30s%-30s%n", "Tomorrow :", index == 6 ? days[0] : days[index + 1]);
+        System.out.printf("%n%n%-30s%-30s%n", "Tomorrow :", index == 6 ? days[0] : days[index + 1]);
         System.out.printf("%-30s%-30s%n%n", "Today's Activity :", index == 6 ? activities[0][0] : activities[index][0]);
 
     }
 
     public static void exerciseList() {
         String number;
-        System.out.printf("%-10s%-20s%-20s%-10s%n%n", "Number", "Day", "Activity", "Duration (s)");
+        System.out.printf("%-10s%-15s%-20s%-15s%n%n", "Number", "Day", "Activity", "Duration (s)");
         for (int i = 0; i < activities.length - 1; ++i) {
             number = "[" + (i + 1) + "]";
-            System.out.printf("%-10s%-20s%-20s%-10s%n", number, days[i], activities[i][0], activities[i][1]);
+            System.out.printf("%-10s%-15s%-20s%-15s%n", number, days[i], activities[i][0], activities[i][1]);
         }
+        System.out.println("");
     }
 
     public static void updateExercise(int day, String newE, String newT) {
