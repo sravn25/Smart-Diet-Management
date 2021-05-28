@@ -16,7 +16,7 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		Diet diet = new Diet();
 
-		boolean inMenu = true;
+		boolean inMenu = true, first = true;
 		int id = -1, calories = 0;
 		String username = "", password = "";
 		ProfileData profile1 = new ProfileData();
@@ -130,9 +130,12 @@ public class Main {
 				}
 
 			}
-			Menu.cls();
-			Menu.footer("Welcome " + Account.displayUser(id));
-			Menu.wait(1000);
+			if (first) {
+				Menu.cls();
+				Menu.footer("Welcome " + Account.displayUser(id));
+				Menu.wait(1000);
+				first = false;
+			}
 
 			Menu.cls();
 			Menu.menu("Main Menu");
@@ -237,6 +240,7 @@ public class Main {
 							// logout
 						} else if (profileProceed == 4) {
 							id = -1;
+							first = true;
 							break;
 
 						} else if (profileProceed == 5) {
@@ -307,7 +311,7 @@ public class Main {
 									Menu.menu("Update Exercise Schedule");
 									Exercise.exerciseList();
 									Menu.footer("");
-									System.out.print("Choose a number to edit\nEnter 'x' to return");
+									System.out.print("Choose a number to edit\nEnter 'x' to return\n");
 									selection = input.nextLine();
 									if (selection.equalsIgnoreCase("X")) {
 										updatingSchedule = false;
@@ -350,7 +354,8 @@ public class Main {
 									if (selection.equals("1")) {
 										// For testing purposes, durations are halved
 										Exercise reminder = new Exercise(Exercise.exerciseDuration());
-										System.out.println("Exercise completed!!\nPress ENTER to continue");
+										System.out.println("\nPress ENTER to continue");
+										input.nextLine();
 									} else if (selection.equals("2")) {
 										exercising = false;
 									} else {
@@ -370,6 +375,7 @@ public class Main {
 								input.nextLine();
 						}
 					}
+					break;
 
 				case 3:
 					// Diet
@@ -383,21 +389,27 @@ public class Main {
 						selection = input.nextLine();
 						int dietProceed = Menu.parseSelection(selection);
 						// generate recipe
-						if (dietProceed ==1) {
+						if (dietProceed == 1) {
 							Menu.cls();
 							System.out.print("Processing");
-							for (int i = 0; i < 11; i+=2) {
+							for (int i = 0; i < 11; i += 2) {
 								System.out.print(".");
 								Menu.wait(100);
 							}
 							Menu.cls();
-							if (diet.dietGoal(profile1.goal) == 0) {
+							int dietPlan = diet.dietGoal(profile1.goal);
+							if (dietPlan == 0) {
 								Menu.menu("Recipe");
 								System.out.println("Insufficient data to generate recipe");
 								System.out.println("Please update your profile data");
 								Menu.footer("Press ENTER to return");
+								input.nextLine();
+
 							} else {
 								Menu.menu("Recipe");
+								diet.recipe(dietPlan);
+								Menu.footer("Press ENTER to continue");
+								input.nextLine();
 							}
 
 						} else if (dietProceed == 2) {
@@ -408,10 +420,16 @@ public class Main {
 						}
 
 					}
+					break;
 
 				case 4:
 					// Food Intake
+					Menu.cls();
+					FoodIntake.foodIntake();
+					Menu.print("\nPress ENTER to continue");
+					input.nextLine();
 					break;
+
 				case 5:
 					// Exit
 					input.close();
