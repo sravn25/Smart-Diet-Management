@@ -47,4 +47,8 @@ public class Account {
         users[3][1] = password;
         return 3;
     }
+
+    public static String displayUser(int id) {
+        return users[id][2];
+    }
 }
