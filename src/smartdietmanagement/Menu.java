@@ -100,7 +100,7 @@ public class Menu {
                 System.out.printf("%-25s%-35s%n%n", no, fitnessOpt[j - 1]);
             }
         } else if (type.equals("diet")) {
-            for (int j = 1; j <= fitnessOpt.length; ++j) {
+            for (int j = 1; j <= dietOpt.length; ++j) {
                 no = "[" + j + "]";
                 System.out.printf("%-25s%-35s%n%n", no, dietOpt[j - 1]);
             }

@@ -426,7 +426,6 @@ public class Main {
 					// Food Intake
 					Menu.cls();
 					FoodIntake.foodIntake();
-					Menu.print("\nPress ENTER to continue");
 					input.nextLine();
 					break;
 
