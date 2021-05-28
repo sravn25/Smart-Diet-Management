@@ -38,7 +38,7 @@ public class Calories {
         // http://www.moneychimp.com/diversions/bmi.htm
         double weight = this.weight, leanFactor = 1;
 
-        if (this.sex == 'f') 
+        if (this.sex == 'f')
             weight *= 0.9;
 
         weight *= 24;
@@ -67,16 +67,16 @@ public class Calories {
 
         weight *= leanFactor;
 
-        return (int)Math.round(weight);
+        return (int) Math.round(weight);
     }
 
-    /*
     public void displayData() {
 
         String number, type;
         String data[] = { this.height == 0.0 ? null : Double.toString(this.height),
                 this.weight == 0.0 ? null : Double.toString(this.weight),
-                this.age == 0 ? null : Integer.toString(this.age), this.goal.equals("") ? null : this.goal };
+                this.sex == 'x' ? null : Character.toString(this.sex) };
+
         for (int i = 0; i < data.length; ++i) {
 
             switch (i) {
@@ -86,11 +86,8 @@ public class Calories {
                 case 1:
                     type = "Weight";
                     break;
-                case 2:
-                    type = "Age";
-                    break;
                 default:
-                    type = "Goal";
+                    type = "Sex";
             }
 
             number = "[" + (i + 1) + "]";
@@ -102,13 +99,12 @@ public class Calories {
             else
                 System.out.printf("%-20s%-20s%-20s%n%n", number, type, data[i]);
         }
-        if (this.weight == 0.0 && this.height == 0.0)
-            System.out.printf("%-20s%-20s%-20s%n%n", "[5]", "BMI", "insufficient data");
+        if (this.weight == 0.0 && this.height == 0.0 && this.sex == 'x')
+            System.out.printf("%-20s%-20s%-20s%n%n", "[4]", "Basal Metabolic Rate", "insufficient data");
         else
-            System.out.printf("%-20s%-20s%-20.2f%n%n", "[5]", "BMI", this.BMICalc());
+            System.out.printf("%-20s%-20s%-20d%n%n", "[4]", "Basal Metabolic Rate", bmrCalc());
 
     }
-    */
 
     /*
      * public static void main(String[] args) {
