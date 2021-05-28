@@ -58,7 +58,7 @@ public class Diet {
             switch (randRec) {
                 case 1:
                     try {
-                        File myObj = new File("../recipes/maintainRecipe1.txt");
+                        File myObj = new File("SmartDietManagement\\src\\recipes\\maintainRecipe1.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -72,7 +72,7 @@ public class Diet {
                     break;
                 case 2:
                     try {
-                        File myObj = new File("../recipes/maintainRecipe2.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/maintainRecipe2.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -86,7 +86,7 @@ public class Diet {
                     break;
                 default:
                     try {
-                        File myObj = new File("../recipes/maintainRecipe3.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/maintainRecipe3.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -105,7 +105,7 @@ public class Diet {
             switch (randRec) {
                 case 1:
                     try {
-                        File myObj = new File("../recipes/gainRecipe1.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/gainRecipe1.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -119,7 +119,7 @@ public class Diet {
                     break;
                 case 2:
                     try {
-                        File myObj = new File("../recipes/gainRecipe2.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/gainRecipe2.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -133,7 +133,7 @@ public class Diet {
                     break;
                 default:
                     try {
-                        File myObj = new File("../recipes/gainRecipe3.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/gainRecipe3.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -152,7 +152,7 @@ public class Diet {
             switch (randRec) {
                 case 1:
                     try {
-                        File myObj = new File("../recipes/lossRecipe1.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/lossRecipe1.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -166,7 +166,7 @@ public class Diet {
                     break;
                 case 2:
                     try {
-                        File myObj = new File("../recipes/lossRecipe2.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/lossRecipe2.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
@@ -180,7 +180,7 @@ public class Diet {
                     break;
                 default:
                     try {
-                        File myObj = new File("../recipes/lossRecipe3.txt");
+                        File myObj = new File("SmartDietManagement/src/recipes/lossRecipe3.txt");
                         Scanner myReader = new Scanner(myObj);
                         while (myReader.hasNextLine()) {
                             String data = myReader.nextLine();
