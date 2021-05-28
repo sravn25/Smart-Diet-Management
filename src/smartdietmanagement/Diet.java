@@ -18,31 +18,42 @@ import java.util.Scanner;
 
 public class Diet {
 
-    public String dietPlan;
+    public int dietPlan;
 
-    public String dietgoal(int currentDiet) {
+    /*
+     * public String dietgoal(int currentDiet) {
+     * 
+     * switch (currentDiet) { case 1: dietPlan = "maintain"; return
+     * ("You have chosen to " + dietPlan + " weight."); case 2: dietPlan = "gain";
+     * return ("You have chosen to " + dietPlan + " weight."); case 3: dietPlan =
+     * "lose"; return ("You have chosen to " + dietPlan + " weight."); default:
+     * dietPlan = "maintain"; return ("Invalid diet plan."); } }
+     */
 
-        switch (currentDiet) {
-            case 1:
-                dietPlan = "maintain";
-                return ("You have chosen to " + dietPlan + " weight.");
-            case 2:
-                dietPlan = "gain";
-                return ("You have chosen to " + dietPlan + " weight.");
-            case 3:
-                dietPlan = "lose";
-                return ("You have chosen to " + dietPlan + " weight.");
+    public int dietGoal(String dietgoal) {
+
+        switch (dietgoal) {
+            case "maintain":
+                dietPlan = 1;
+                break;
+            case "gain":
+                dietPlan = 2;
+                break;
+            case "lose":
+                dietPlan = 3;
+                break;
             default:
-                dietPlan = "maintain";
-                return ("Invalid diet plan.");
+                dietPlan = 0;
         }
+        return dietPlan;
+
     }
 
-    public void recipe(int allowRecipe, int currentDiet) {
+    public void recipe(int currentDiet) {
 
         int randRec = new Random().nextInt(3) + 1;
 
-        if ((allowRecipe == 1) & (currentDiet == 1)) {
+        if (currentDiet == 1) {
             // recipe = "Weight Maintain";
             switch (randRec) {
                 case 1:
@@ -89,7 +100,7 @@ public class Diet {
                     break;
             }
 
-        } else if ((allowRecipe == 1) & (currentDiet == 2)) {
+        } else if (currentDiet == 2) {
             // recipe = "Weight Gain";
             switch (randRec) {
                 case 1:
@@ -136,7 +147,7 @@ public class Diet {
                     break;
             }
 
-        } else if ((allowRecipe == 1) & (currentDiet == 3)) {
+        } else if (currentDiet == 3) {
             // recipe = "Weight loss";
             switch (randRec) {
                 case 1:
