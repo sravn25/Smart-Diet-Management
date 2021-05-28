@@ -16,6 +16,7 @@ public class Calories {
         this.weight = weight;
         this.height = height;
         this.age = age;
+        this.sex = 'x';
     }
 
     public void updateCalories(double weight, double height, int age) {
@@ -75,7 +76,7 @@ public class Calories {
         String number, type;
         String data[] = { this.height == 0.0 ? null : Double.toString(this.height),
                 this.weight == 0.0 ? null : Double.toString(this.weight),
-                this.sex == 'x' ? null : Character.toString(this.sex) };
+                this.sex == 'x' ? null : Character.toString(this.sex).toUpperCase() };
 
         for (int i = 0; i < data.length; ++i) {
 
@@ -100,9 +101,9 @@ public class Calories {
                 System.out.printf("%-20s%-20s%-20s%n%n", number, type, data[i]);
         }
         if (this.weight == 0.0 && this.height == 0.0 && this.sex == 'x')
-            System.out.printf("%-20s%-20s%-20s%n%n", "[4]", "Basal Metabolic Rate", "insufficient data");
+            System.out.printf("%-20s%-20s%-20s%n%n", "[4]", "BMR", "insufficient data");
         else
-            System.out.printf("%-20s%-20s%-20d%n%n", "[4]", "Basal Metabolic Rate", bmrCalc());
+            System.out.printf("%-20s%-20s%-20d%n%n", "[4]", "BMR", bmrCalc());
 
     }
 
