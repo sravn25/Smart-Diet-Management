@@ -6,10 +6,12 @@
 package smartdietmanagement;
 
 // import java.io.FileReader;
-import java.io.File;
-import java.io.FileNotFoundException;
+// import java.io.File;
+// import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
+
+import java.io.InputStream;
 
 /**
  *
@@ -57,46 +59,46 @@ public class Diet {
             // recipe = "Weight Maintain";
             switch (randRec) {
                 case 1:
-                    try {
-                        File myObj = new File("src\\recipes\\maintainRecipe1.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream maintain1 = getClass().getResourceAsStream("/recipes/maintainRecipe1.txt");
+                    Scanner maintainReader1 = new Scanner(maintain1);
+                    while (maintainReader1.hasNextLine()) {
+                        String data = maintainReader1.nextLine();
+                        System.out.println(data);
                     }
+                    maintainReader1.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 case 2:
-                    try {
-                        File myObj = new File("src/recipes/maintainRecipe2.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream maintain2 = getClass().getResourceAsStream("/recipes/maintainRecipe2.txt");
+                    Scanner maintainReader2 = new Scanner(maintain2);
+                    while (maintainReader2.hasNextLine()) {
+                        String data = maintainReader2.nextLine();
+                        System.out.println(data);
                     }
+                    maintainReader2.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 default:
-                    try {
-                        File myObj = new File("src/recipes/maintainRecipe3.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream maintain3 = getClass().getResourceAsStream("/recipes/maintainRecipe3.txt");
+                    Scanner maintainReader3 = new Scanner(maintain3);
+                    while (maintainReader3.hasNextLine()) {
+                        String data = maintainReader3.nextLine();
+                        System.out.println(data);
                     }
+                    maintainReader3.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
             }
 
@@ -104,46 +106,46 @@ public class Diet {
             // recipe = "Weight Gain";
             switch (randRec) {
                 case 1:
-                    try {
-                        File myObj = new File("src/recipes/gainRecipe1.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream gain1 = getClass().getResourceAsStream("/recipes/gainRecipe1.txt");
+                    Scanner gainReader1 = new Scanner(gain1);
+                    while (gainReader1.hasNextLine()) {
+                        String data = gainReader1.nextLine();
+                        System.out.println(data);
                     }
+                    gainReader1.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 case 2:
-                    try {
-                        File myObj = new File("src/recipes/gainRecipe2.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream gain2 = getClass().getResourceAsStream("/recipes/gainRecipe2.txt");
+                    Scanner gainReader2 = new Scanner(gain2);
+                    while (gainReader2.hasNextLine()) {
+                        String data = gainReader2.nextLine();
+                        System.out.println(data);
                     }
+                    gainReader2.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 default:
-                    try {
-                        File myObj = new File("src/recipes/gainRecipe3.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    InputStream gain3 = getClass().getResourceAsStream("/recipes/gainRecipe3.txt");
+                    Scanner gainReader3 = new Scanner(gain3);
+                    while (gainReader3.hasNextLine()) {
+                        String data = gainReader3.nextLine();
+                        System.out.println(data);
                     }
+                    gainReader3.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
             }
 
@@ -151,46 +153,49 @@ public class Diet {
             // recipe = "Weight loss";
             switch (randRec) {
                 case 1:
-                    try {
-                        File myObj = new File("src/recipes/lossRecipe1.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    // File myObj = new File("src/recipes/lossRecipe1.txt");
+                    InputStream lose1 = getClass().getResourceAsStream("/recipes/lossRecipe1.txt");
+                    Scanner loseReader1 = new Scanner(lose1);
+                    while (loseReader1.hasNextLine()) {
+                        String data = loseReader1.nextLine();
+                        System.out.println(data);
                     }
+                    loseReader1.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 case 2:
-                    try {
-                        File myObj = new File("src/recipes/lossRecipe2.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    // File myObj = new File("src/recipes/lossRecipe2.txt");
+                    InputStream lose2 = getClass().getResourceAsStream("/recipes/lossRecipe2.txt");
+                    Scanner loseReader2 = new Scanner(lose2);
+                    while (loseReader2.hasNextLine()) {
+                        String data = loseReader2.nextLine();
+                        System.out.println(data);
                     }
+                    loseReader2.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
                 default:
-                    try {
-                        File myObj = new File("src/recipes/lossRecipe3.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
+                    // try {
+                    // File myObj = new File("src/recipes/lossRecipe3.txt");
+                    InputStream lose3 = getClass().getResourceAsStream("/recipes/lossRecipe3.txt");
+                    Scanner loseReader3 = new Scanner(lose3);
+                    while (loseReader3.hasNextLine()) {
+                        String data = loseReader3.nextLine();
+                        System.out.println(data);
                     }
+                    loseReader3.close();
+                    // } catch (FileNotFoundException e) {
+                    // System.out.println("An error occurred.");
+                    // e.printStackTrace();
+                    // }
                     break;
             }
 
