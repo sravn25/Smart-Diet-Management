@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	/* !!! Please do not spam the input !!! */
+	// !!! Please do not spam the input !!
 
 	public static void main(String[] args) {
 
@@ -17,26 +17,33 @@ public class Main {
 		Diet diet = new Diet();
 
 		boolean inMenu = true, first = true;
-		int id = -1, calories = 0;
+		int id = -1;
 		String username = "", password = "";
 		ProfileData profile1 = new ProfileData();
+
+		// Welcome
+		Menu.menu("");
+		System.out.printf("%17s%20s%n%n", " ", "Welcome to DietBank");
+		Menu.footer("");
+		Menu.wait(2000);
 
 		// Stays inside menu until QUIT command is executed
 		while (inMenu) {
 
 			Calories caloriesConst = new Calories(profile1.weight, profile1.height, profile1.age);
 
+			// if new acc or logged out
 			if (id == -1) {
 				profile1.setHeight(0.0);
 				profile1.setWeight(0.0);
 				profile1.setAge(0);
 				profile1.setGoal("");
-				calories = 0;
 				caloriesConst.sex = 'x';
 			}
 
 			while (id == -1) {
 				// Login Menu interface
+				Menu.cls();
 				Menu.menu("Login Menu");
 				Menu.mainMenu("login");
 				Menu.footer("What would you like to do?");
@@ -130,6 +137,7 @@ public class Main {
 				}
 
 			}
+			// Welcomes user
 			if (first) {
 				Menu.cls();
 				Menu.footer("Welcome " + Account.displayUser(id));
@@ -137,6 +145,7 @@ public class Main {
 				first = false;
 			}
 
+			// Main Menu interface
 			Menu.cls();
 			Menu.menu("Main Menu");
 			Menu.mainMenu("main");
@@ -175,10 +184,12 @@ public class Main {
 								profile1.displayData();
 								Menu.footer("Select one to update, (x) to return");
 								selection = input.nextLine();
+								// return
 								if (selection.equalsIgnoreCase("x")) {
 									updatingData = false;
 									break;
 								}
+								// updates data
 								int type = Menu.parseSelection(selection);
 								if (type > 0 && type < 5) {
 									Menu.print(type == 4 ? "Enter your goal (gain / lose / maintain): "
@@ -207,13 +218,14 @@ public class Main {
 								Menu.cls();
 								Menu.menu("BMI Calculator");
 								double bmi = profile1.BMICalc();
-								System.out.printf("%-20s%-20s%-20f%n%n", "[1]", "My BMI", bmi);
-								System.out.printf("%-20s%-20s%-20s%n%n", "[2]", "BMI Status", profile1.BMIScale(bmi));
+								System.out.printf("%-20s%-20s%-20f%n%n", "[1]", "My BMI", bmi); // calculates bmi value
+								System.out.printf("%-20s%-20s%-20s%n%n", "[2]", "BMI Status", profile1.BMIScale(bmi)); // bmi
+																														// status
 								Menu.footer("[1] to calculate BMI, [2] to Return");
 								selection = input.nextLine();
 								int bmiProceed = Menu.parseSelection(selection);
+								// bmi calculator
 								if (bmiProceed == 1) {
-
 									Menu.cls();
 									Menu.menu("BMI Calculator");
 									double newHeight, newWeight;
@@ -243,6 +255,7 @@ public class Main {
 							first = true;
 							break;
 
+							// return
 						} else if (profileProceed == 5) {
 							inProfile = false;
 							break;
@@ -273,6 +286,7 @@ public class Main {
 						switch (fitnessProceed) {
 							case 1: // Calories data
 
+								// get gender for calculation purpose
 								while (caloriesConst.sex == 'x') {
 									Menu.cls();
 									Menu.mainMenu("Survey");
@@ -289,7 +303,6 @@ public class Main {
 								Menu.cls();
 								Menu.menu("Calories Data");
 								caloriesConst.displayData();
-								calories = caloriesConst.bmrCalc();
 								Menu.footer("Press ENTER to continue");
 								input.nextLine();
 
@@ -313,11 +326,13 @@ public class Main {
 									Menu.footer("");
 									System.out.print("Choose a number to edit\nEnter 'x' to return\n");
 									selection = input.nextLine();
+									// return
 									if (selection.equalsIgnoreCase("X")) {
 										updatingSchedule = false;
 										break;
 									}
 									int dayToUpdate = Menu.parseSelection(selection);
+									// updates exercise data
 									if (dayToUpdate > 0 && dayToUpdate < 8) {
 										System.out.print("New Exercise : ");
 										String newExercise = input.nextLine();
@@ -353,7 +368,7 @@ public class Main {
 									selection = input.nextLine();
 									if (selection.equals("1")) {
 										// For testing purposes, durations are halved
-										Exercise reminder = new Exercise(Exercise.exerciseDuration());
+										new Exercise(Exercise.exerciseDuration());
 										System.out.println("\nPress ENTER to continue");
 										input.nextLine();
 									} else if (selection.equals("2")) {
@@ -388,7 +403,7 @@ public class Main {
 
 						selection = input.nextLine();
 						int dietProceed = Menu.parseSelection(selection);
-						// generate recipe
+						// generate recipe from Diet.java
 						if (dietProceed == 1) {
 							Menu.cls();
 							System.out.print("Processing");
@@ -398,6 +413,7 @@ public class Main {
 							}
 							Menu.cls();
 							int dietPlan = diet.dietGoal(profile1.goal);
+							// if didn't update profile goal
 							if (dietPlan == 0) {
 								Menu.menu("Recipe");
 								System.out.println("Insufficient data to generate recipe");
