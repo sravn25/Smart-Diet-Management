@@ -52,6 +52,13 @@ public class Exercise {
                                 : today.equals("Thu") ? "Thursday"
                                         : today.equals("Fri") ? "Friday" : today.equals("Sat") ? "Saturday" : "Sunday");
         System.out.printf("%-30s%-30s%n", "Activity: ",
+                today.equals("Mon") ? activities[0][0]
+                        : today.equals("Tue") ? activities[1][0]
+                                : today.equals("Wed") ? activities[2][0]
+                                        : today.equals("Thu") ? activities[3][0]
+                                                : today.equals("Fri") ? activities[4][0]
+                                                        : today.equals("Sat") ? activities[5][0] : activities[6][0]);
+        System.out.printf("%-30s%-30s%n", "Duration: ",
                 today.equals("Mon") ? activities[0][1]
                         : today.equals("Tue") ? activities[1][1]
                                 : today.equals("Wed") ? activities[2][1]
@@ -112,7 +119,8 @@ public class Exercise {
         }
 
         System.out.printf("%n%n%-30s%-30s%n", "Tomorrow :", index == 6 ? days[0] : days[index + 1]);
-        System.out.printf("%-30s%-30s%n%n", "Today's Activity :", index == 6 ? activities[0][0] : activities[index][0]);
+        System.out.printf("%-30s%-30s%n%n", "Tomorrow's Activity :",
+                index == 6 ? activities[0][0] : activities[index + 1][0]);
 
     }
 
