@@ -14,7 +14,7 @@ public class FoodIntake {
     public static void foodIntake() {
 
         Scanner keyboard = new Scanner(System.in);
-        double servingCalories;
+        double servingCalories = 0;
         double caloriePercent;
         String foodType;
         String brandName;
@@ -38,8 +38,22 @@ public class FoodIntake {
         brandName = keyboard.next();
         foodType = keyboard.next();
 
-        System.out.print("Please enter the amount of Calories in 1 serving:");
-        servingCalories = keyboard.nextDouble();
+        boolean entering = true;
+        while (entering) {
+            System.out.print("Please enter the amount of Calories in 1 serving:");
+            String calories = keyboard.next();
+            try {
+                // servingCalories = keyboard.nextDouble();
+                Double.parseDouble(calories);
+                servingCalories = Double.parseDouble(calories);
+            } catch (Exception e) {
+                System.out.println("Please enter a valid amount\n");
+            }
+
+            if (servingCalories != 0) {
+                entering = false;
+            }
+        }
 
         System.out.println();
 
