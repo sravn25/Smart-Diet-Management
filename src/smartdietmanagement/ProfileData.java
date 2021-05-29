@@ -11,11 +11,6 @@ public class ProfileData {
     public int age;
     public String goal;
 
-    // private static String data[][] = { { "180", "70", "20", "maintain" }, {
-    // "150", "45", "19", "gain" },
-    // { "160", "60", "21", "lose" }, { null, null, null, null }, { null, null,
-    // null, null } };
-
     // assign values to variables
     public ProfileData() {
         height = (double) 0.0;
